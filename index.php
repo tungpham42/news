@@ -1,17 +1,20 @@
+<?php
+include './config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tin tức Việt Nam</title>
+    <title>World News</title>
     <meta property="og:image" content="https://news.cungrao.net/news_1200x630.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://news.cungrao.net">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Tin tức Việt Nam">
-    <meta property="og:description" content="Tin tức Việt Nam mới nhất, cập nhật 24/7. Xem tin tức, sự kiện, thời sự, thể thao, kinh tế, văn hóa và giải trí nhanh chóng và chính xác.">
-    <meta name="description" content="Tin tức Việt Nam mới nhất, cập nhật 24/7. Xem tin tức, sự kiện, thời sự, thể thao, kinh tế, văn hóa và giải trí nhanh chóng và chính xác.">
+    <meta property="og:title" content="World News">
+    <meta property="og:description" content="Latest World News, updated 24/7. Gathered from popular News websites.">
+    <meta name="description" content="Latest World News, updated 24/7. Gathered from popular News websites.">
     <link rel="icon" href="./news_favicon.png" sizes="64x64" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -24,47 +27,45 @@
     <!-- Custom CSS -->
     <link href="style.css?v=3" rel="stylesheet">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3585118770961536" crossorigin="anonymous"></script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KTPXGLK');</script>
+    <!-- End Google Tag Manager -->
+    <script>
+        const newsData = <?php echo json_encode($newsData); ?>;
+    </script>
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Tin tức Việt Nam</h1>
+        <h1 class="text-center mb-4">World News</h1>
 
         <!-- Tabs navigation -->
         <ul class="nav nav-tabs" id="newsTabs" role="tablist">
+            <?php
+            foreach ($newsData as $news):
+            ?>
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="vnexpress-tab" data-bs-toggle="tab" data-bs-target="#vnexpress" type="button" role="tab" aria-controls="vnexpress" aria-selected="true">VnExpress</button>
+                <button class="nav-link<?php echo $news['id'] == 1 ? ' active': ''; ?>" id="<?php echo $news['name']; ?>-tab" data-bs-toggle="tab" data-bs-target="#<?php echo $news['name']; ?>" type="button" role="tab" aria-controls="<?php echo $news['name']; ?>" aria-selected="true"><?php echo $news['title']; ?></button>
             </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="vietnamnet-tab" data-bs-toggle="tab" data-bs-target="#vietnamnet" type="button" role="tab" aria-controls="vietnamnet" aria-selected="true">VietNamNet</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="dantri-tab" data-bs-toggle="tab" data-bs-target="#dantri" type="button" role="tab" aria-controls="dantri" aria-selected="false">Dân Trí</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="tuoitre-tab" data-bs-toggle="tab" data-bs-target="#tuoitre" type="button" role="tab" aria-controls="tuoitre" aria-selected="false">Tuổi Trẻ</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="thanhnien-tab" data-bs-toggle="tab" data-bs-target="#thanhnien" type="button" role="tab" aria-controls="thanhnien" aria-selected="false">Thanh Niên</button>
-            </li>
+            <?php
+            endforeach;
+            ?>
         </ul>
 
         <!-- Tabs content -->
         <div class="tab-content mt-3" id="newsTabsContent">
-            <div class="tab-pane fade show active" id="vnexpress" role="tabpanel" aria-labelledby="vnexpress-tab">
-                <div id="vnexpress-news-container" class="row"></div>
+            <?php
+            foreach ($newsData as $news):
+            ?>
+            <div class="tab-pane fade<?php echo $news['id'] == 1 ? ' show active': ''; ?>" id="<?php echo $news['name']; ?>" role="tabpanel" aria-labelledby="<?php echo $news['name']; ?>-tab">
+                <div id="<?php echo $news['name']; ?>-news-container" class="row"></div>
             </div>
-            <div class="tab-pane fade" id="vietnamnet" role="tabpanel" aria-labelledby="vietnamnet-tab">
-                <div id="vietnamnet-news-container" class="row"></div>
-            </div>
-            <div class="tab-pane fade" id="dantri" role="tabpanel" aria-labelledby="dantri-tab">
-                <div id="dantri-news-container" class="row"></div>
-            </div>
-            <div class="tab-pane fade" id="tuoitre" role="tabpanel" aria-labelledby="tuoitre-tab">
-                <div id="tuoitre-news-container" class="row"></div>
-            </div>
-            <div class="tab-pane fade" id="thanhnien" role="tabpanel" aria-labelledby="thanhnien-tab">
-                <div id="thanhnien-news-container" class="row"></div>
-            </div>
+            <?php
+            endforeach;
+            ?>
         </div>
     </div>
 
@@ -73,6 +74,6 @@
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Custom JS -->
-    <script src="script.js?v=17"></script>
+    <script src="script.js?v=22"></script>
 </body>
 </html>

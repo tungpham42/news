@@ -52,14 +52,9 @@ function fetchRss(rssUrl, containerID) {
   });
 }
 $(document).ready(function () {
-  fetchRss(
-    "https://vnexpress.net/rss/tin-moi-nhat.rss",
-    "#vnexpress-news-container"
-  );
-  fetchRss("https://vietnamnet.vn/home.rss", "#vietnamnet-news-container");
-  fetchRss("https://dantri.com.vn/rss/home.rss", "#dantri-news-container");
-  fetchRss("https://tuoitre.vn/rss/home.rss", "#tuoitre-news-container");
-  fetchRss("https://thanhnien.vn/rss/home.rss", "#thanhnien-news-container");
+  newsData.forEach((news, index) => {
+    fetchRss(news.url, "#" + news.name + "-news-container");
+  });
   function updateHeights() {
     setEqualHeight("img.card-img-top");
     setEqualHeight("h5.card-title");
@@ -70,7 +65,7 @@ $(document).ready(function () {
     window.addEventListener("load", updateHeights);
     window.addEventListener("resize", updateHeights);
     $('button[data-bs-toggle="tab"]').on("shown.bs.tab", updateHeights);
-    jQuery(document).on("ajaxComplete", updateHeights);
+    $(document).on("ajaxComplete", updateHeights);
   }
   setEvents();
 });
