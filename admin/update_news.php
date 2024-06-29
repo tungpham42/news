@@ -10,7 +10,7 @@ $newUrl = $_POST['url'];
 $newName = $_POST['name'];
 
 // Build and execute the SQL query to update the record
-$query = 'UPDATE `titles` SET `title` = :new_title, `url` = :new_url, `name` = :new_name WHERE `id` = :id';
+$query = 'UPDATE `news` SET `title` = :new_title, `url` = :new_url, `name` = :new_name WHERE `id` = :id';
 $statement = $pdo->prepare($query);
 $statement->bindValue(':new_title', $newTitle);
 $statement->bindValue(':new_url', $newUrl);

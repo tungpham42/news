@@ -45,17 +45,17 @@
 
         <div class="form-group">
           <label for="title">News Title:</label>
-          <input type="text" class="form-control" id="title" name="title" value="<?php echo $row['news']; ?>" required>
+          <input type="text" class="form-control" id="title" name="title" value="<?php echo $row['title']; ?>" required>
         </div>
 
         <div class="form-group">
           <label for="url">RSS URL:</label>
-          <input type="number" class="form-control" id="url" name="url" value="<?php echo $row['url']; ?>" required>
+          <input type="text" class="form-control" id="url" name="url" value="<?php echo $row['url']; ?>" required>
         </div>
 
         <div class="form-group">
           <label for="name">Short name:</label>
-          <input type="number" class="form-control" id="name" name="name" value="<?php echo $row['name']; ?>" required>
+          <input type="text" class="form-control" id="name" name="name" value="<?php echo $row['name']; ?>" required>
         </div>
 
         <button type="submit" class="btn btn-dark my-3">Edit</button>
