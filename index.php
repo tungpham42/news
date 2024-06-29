@@ -7,10 +7,10 @@ include './config.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $settings['siteTitle']; ?></title>
-    <meta property="og:image" content="https://news.cungrao.net/news_1200x630.jpg">
+    <meta property="og:image" content="<?php echo $currentURL; ?>/news_1200x630.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://news.cungrao.net">
+    <meta property="og:url" content="<?php echo $currentURL; ?>">
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?php echo $settings['siteTitle']; ?>">
     <meta property="og:description" content="<?php echo $settings['siteDescription']; ?>">

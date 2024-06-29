@@ -12,3 +12,11 @@ $firstKey = array_key_first($newsData);
 $siteQuery = 'SELECT `siteTitle`, `siteDescription` FROM `settings`';
 $siteStatement = $pdo->query($siteQuery);
 $settings = $siteStatement->fetch(PDO::FETCH_ASSOC);
+
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+
+// Get the domain name
+$domainName = $_SERVER['HTTP_HOST'];
+
+// Combine them to get the full URL
+$currentURL = $protocol . $domainName;
