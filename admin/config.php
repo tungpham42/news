@@ -7,4 +7,3 @@ include realpath('./db.php');
 // Retrieve data from the "news" table
 $query = $pdo->query('SELECT `id`, `title`, `url`, `name` FROM `news`');
 $newsData = $query->fetchAll(PDO::FETCH_ASSOC);
-$firstKey = array_key_first($newsData);

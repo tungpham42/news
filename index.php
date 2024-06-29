@@ -6,15 +6,15 @@ include './config.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World News</title>
-    <meta property="og:image" content="https://news.cungrao.net/news_1200x630.jpg">
+    <title>Tin tức Tổng hợp</title>
+    <meta property="og:image" content="https://tintuc.nhipsinhhoc.vn/news_1200x630.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://news.cungrao.net">
+    <meta property="og:url" content="https://tintuc.nhipsinhhoc.vn">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="World News">
-    <meta property="og:description" content="Latest World News, updated 24/7. Gathered from popular News websites.">
-    <meta name="description" content="Latest World News, updated 24/7. Gathered from popular News websites.">
+    <meta property="og:title" content="Tin tức Tổng hợp">
+    <meta property="og:description" content="Tin tức mới nhất tổng hợp từ nhiều nguồn báo chí đáng tin cậy.">
+    <meta name="description" content="Tin tức mới nhất tổng hợp từ nhiều nguồn báo chí đáng tin cậy.">
     <link rel="icon" href="./news_favicon.png" sizes="64x64" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -40,15 +40,15 @@ include './config.php';
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center mb-4">World News</h1>
+        <h1 class="text-center mb-4">Tin tức Tổng hợp</h1>
 
         <!-- Tabs navigation -->
         <ul class="nav nav-tabs" id="newsTabs" role="tablist">
             <?php
-            foreach ($newsData as $news):
+            foreach ($newsData as $key => $news):
             ?>
             <li class="nav-item" role="presentation">
-                <button class="nav-link<?php echo $news['id'] == 1 ? ' active': ''; ?>" id="<?php echo $news['name']; ?>-tab" data-bs-toggle="tab" data-bs-target="#<?php echo $news['name']; ?>" type="button" role="tab" aria-controls="<?php echo $news['name']; ?>" aria-selected="true"><?php echo $news['title']; ?></button>
+                <button class="nav-link<?php echo $key == $firstKey ? ' active': ''; ?>" id="<?php echo $news['name']; ?>-tab" data-bs-toggle="tab" data-bs-target="#<?php echo $news['name']; ?>" type="button" role="tab" aria-controls="<?php echo $news['name']; ?>" aria-selected="true"><?php echo $news['title']; ?></button>
             </li>
             <?php
             endforeach;
@@ -58,9 +58,9 @@ include './config.php';
         <!-- Tabs content -->
         <div class="tab-content mt-3" id="newsTabsContent">
             <?php
-            foreach ($newsData as $news):
+            foreach ($newsData as $key => $news):
             ?>
-            <div class="tab-pane fade<?php echo $news['id'] == 1 ? ' show active': ''; ?>" id="<?php echo $news['name']; ?>" role="tabpanel" aria-labelledby="<?php echo $news['name']; ?>-tab">
+            <div class="tab-pane fade<?php echo $key == $firstKey ? ' show active': ''; ?>" id="<?php echo $news['name']; ?>" role="tabpanel" aria-labelledby="<?php echo $news['name']; ?>-tab">
                 <div id="<?php echo $news['name']; ?>-news-container" class="row"></div>
             </div>
             <?php
