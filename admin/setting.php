@@ -4,7 +4,7 @@ ini_set('display_errors', 'On');
 // Include the SQLite database connection
 include realpath('../db.php');
 // Check if the form is submitted
-$defaultQuery = 'SELECT `username`, `password`, `excludeNumber` FROM `settings`';
+$defaultQuery = 'SELECT `username`, `password`, `siteTitle`, `siteDescription` FROM `settings`';
 $defaultStatement = $pdo->query($defaultQuery);
 $settings = $defaultStatement->fetch(PDO::FETCH_ASSOC);
 
@@ -12,14 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Retrieve the form data
   $username = $_POST['username'];
   $password = $_POST['password'];
+  $siteTitle = $_POST['siteTitle'];
+  $siteDescription = $_POST['siteDescription'];
 
-  $excludeNumber = $_POST['excludeNumber'];
-
-  $updatedQuery = 'UPDATE `settings` SET `username` = :username, `password` = :password, `excludeNumber` = :excludeNumber WHERE `id` = 1';
+  $updatedQuery = 'UPDATE `settings` SET `username` = :username, `password` = :password, `siteTitle` = :siteTitle, `siteDescription` = :siteDescription WHERE `id` = 1';
   $updatedStatement = $pdo->prepare($updatedQuery);
   $updatedStatement->bindValue(':username', $username);
   $updatedStatement->bindValue(':password', $password);
-  $updatedStatement->bindValue(':excludeNumber', $excludeNumber);
+  $updatedStatement->bindValue(':siteTitle', $siteTitle);
+  $updatedStatement->bindValue(':siteDescription', $siteDescription);
   $updatedStatement->execute();
   // Close the database connection
   $pdo = null;
@@ -53,8 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="password" class="form-control" id="password" name="password" value="<?php echo $settings['password']; ?>">
       </div>
       <div class="form-group">
-        <label for="excludeNumber">Exclude Number</label>
-        <input type="number" class="form-control" id="excludeNumber" name="excludeNumber" value="<?php echo $settings['excludeNumber']; ?>">
+        <label for="siteTitle">Site Title</label>
+        <input type="text" class="form-control" id="siteTitle" name="siteTitle" value="<?php echo $settings['siteTitle']; ?>">
+      </div>
+      <div class="form-group">
+        <label for="siteTitle">Site Description</label>
+        <input type="text" class="form-control" id="siteDescription" name="siteDescription" value="<?php echo $settings['siteDescription']; ?>">
       </div>
       <button type="submit" class="btn btn-dark my-4">Save</button>
     </form>

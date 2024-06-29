@@ -23,7 +23,8 @@ if ($db_type == 'mysql') {
             `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
             `username` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
             `password` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-            `excludeNumber` int(11) NOT NULL DEFAULT 0,
+            `siteTitle` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+            `siteDescription` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
             PRIMARY KEY (`id`)
         ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
     ';
@@ -43,7 +44,8 @@ if ($db_type == 'mysql') {
             `id` INTEGER PRIMARY KEY,
             `username` TEXT,
             `password` TEXT,
-            `excludeNumber` INTEGER
+            `siteTitle` TEXT,
+            `siteDescription` TEXT
         )
     ';
 }
@@ -58,14 +60,30 @@ $count = $countStatement->fetchColumn();
 if ($count === 0) {
     $username = 'admin';
     $password = 'password';
+    $siteTitle = 'World News';
+    $siteDescription = 'Latest news from popular newspapers. Updated 24/7.';
     $defaultSettings = array(
         'username' => $username,
-        'password' => $password
+        'password' => $password,
+        'siteTitle' => $siteTitle,
+        'siteDescription' => $siteDescription
     );
     $insertSettingsQuery = '
-    INSERT INTO `settings` (`username`, `password`)
-    VALUES (:username, :password)
+    INSERT INTO `settings` (`username`, `password`, `siteTitle`, `siteDescription`)
+    VALUES (:username, :password, :siteTitle, :siteDescription)
     ';
     $statement = $pdo->prepare($insertSettingsQuery);
     $statement->execute($defaultSettings);
+
+    $firstNews = array(
+        'title' => 'VnExpress',
+        'url' => 'https://vnexpress.net/rss/tin-moi-nhat.rss',
+        'name' => 'vne'
+    );
+    $insertFirstNewsQuery = '
+    INSERT INTO `news` (`title`, `url`, `name`)
+    VALUES (:title, :url, :name)
+    ';
+    $newsStatement = $pdo->prepare($insertFirstNewsQuery);
+    $newsStatement->execute($firstNews);
 }

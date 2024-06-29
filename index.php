@@ -6,15 +6,15 @@ include './config.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tin tức Tổng hợp</title>
-    <meta property="og:image" content="https://tintuc.nhipsinhhoc.vn/news_1200x630.jpg">
+    <title><?php echo $settings['siteTitle']; ?></title>
+    <meta property="og:image" content="https://news.cungrao.net/news_1200x630.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://tintuc.nhipsinhhoc.vn">
+    <meta property="og:url" content="https://news.cungrao.net">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Tin tức Tổng hợp">
-    <meta property="og:description" content="Tin tức mới nhất tổng hợp từ nhiều nguồn báo chí đáng tin cậy.">
-    <meta name="description" content="Tin tức mới nhất tổng hợp từ nhiều nguồn báo chí đáng tin cậy.">
+    <meta property="og:title" content="<?php echo $settings['siteTitle']; ?>">
+    <meta property="og:description" content="<?php echo $settings['siteDescription']; ?>">
+    <meta name="description" content="<?php echo $settings['siteDescription']; ?>">
     <link rel="icon" href="./news_favicon.png" sizes="64x64" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -40,7 +40,7 @@ include './config.php';
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Tin tức Tổng hợp</h1>
+        <h1 class="text-center mb-4"><?php echo $settings['siteTitle']; ?></h1>
 
         <!-- Tabs navigation -->
         <ul class="nav nav-tabs" id="newsTabs" role="tablist">
