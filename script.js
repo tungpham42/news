@@ -70,7 +70,7 @@ $(document).ready(function () {
     window.addEventListener("load", updateHeights);
     window.addEventListener("resize", updateHeights);
     $('button[data-bs-toggle="tab"]').on("shown.bs.tab", updateHeights);
-    jQuery(document).on("ajaxComplete", updateHeights);
+    $(document).on("ajaxComplete", updateHeights);
   }
   setEvents();
 });
