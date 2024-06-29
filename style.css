@@ -1,0 +1,40 @@
+body {
+  background-color: #f8f9fa;
+  font-family: "Be Vietnam Pro", sans-serif !important;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span,
+small,
+button {
+  font-family: "Be Vietnam Pro", sans-serif !important;
+}
+.card {
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004d99;
+}
