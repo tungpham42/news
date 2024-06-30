@@ -25,6 +25,7 @@ if ($db_type == 'mysql') {
             `password` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
             `siteTitle` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
             `siteDescription` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+            `theme` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
             PRIMARY KEY (`id`)
         ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
     ';
@@ -45,7 +46,8 @@ if ($db_type == 'mysql') {
             `username` TEXT,
             `password` TEXT,
             `siteTitle` TEXT,
-            `siteDescription` TEXT
+            `siteDescription` TEXT,
+            `theme` TEXT
         )
     ';
 }
@@ -62,15 +64,17 @@ if ($count === 0) {
     $password = 'password';
     $siteTitle = 'World News';
     $siteDescription = 'Latest news from popular newspapers. Updated 24/7.';
+    $theme = 'quartz';
     $defaultSettings = array(
         'username' => $username,
         'password' => $password,
         'siteTitle' => $siteTitle,
-        'siteDescription' => $siteDescription
+        'siteDescription' => $siteDescription,
+        'theme' => $theme
     );
     $insertSettingsQuery = '
-    INSERT INTO `settings` (`username`, `password`, `siteTitle`, `siteDescription`)
-    VALUES (:username, :password, :siteTitle, :siteDescription)
+    INSERT INTO `settings` (`username`, `password`, `siteTitle`, `siteDescription`, `theme`)
+    VALUES (:username, :password, :siteTitle, :siteDescription, :theme)
     ';
     $statement = $pdo->prepare($insertSettingsQuery);
     $statement->execute($defaultSettings);

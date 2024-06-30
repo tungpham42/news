@@ -9,7 +9,7 @@ $newQuery = $pdo->query('SELECT `id`, `title`, `url`, `name` FROM `news`');
 $newsData = $newQuery->fetchAll(PDO::FETCH_ASSOC);
 $firstKey = array_key_first($newsData);
 
-$siteQuery = 'SELECT `siteTitle`, `siteDescription` FROM `settings`';
+$siteQuery = 'SELECT `siteTitle`, `siteDescription`, `theme` FROM `settings`';
 $siteStatement = $pdo->query($siteQuery);
 $settings = $siteStatement->fetch(PDO::FETCH_ASSOC);
 
