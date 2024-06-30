@@ -13,7 +13,7 @@ function fetchRSS($url) {
     
     foreach ($rss->channel->item as $item) {
         $items[] = [
-            'title' => (string) html_entity_decode($item->title),
+            'title' => (string) html_entity_decode(removeCdataTags($item->title)),
             'link'  => (string) $item->link,
             'description' => (string) html_entity_decode(removeCdataTags($item->description)),
             'pubDate' => (string) $item->pubDate,
