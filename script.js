@@ -54,6 +54,9 @@ function fetchRss(rssUrl, containerID) {
 $(document).ready(function () {
   newsData.forEach((news, index) => {
     fetchRss(news.url, "#" + news.name + "-news-container");
+    $('#' + news.name + '-tab').on('click', function(){
+      fetchRss(news.url, "#" + news.name + "-news-container");
+    });
   });
   function updateHeights() {
     setEqualHeight("img.card-img-top");
