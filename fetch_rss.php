@@ -9,9 +9,9 @@ function fetchRSS($url) {
     
     foreach ($rss->channel->item as $item) {
         $items[] = [
-            'title' => (string) $item->title,
+            'title' => (string) html_entity_decode($item->title),
             'link'  => (string) $item->link,
-            'description' => (string) $item->description,
+            'description' => (string) html_entity_decode($item->description),
             'pubDate' => (string) $item->pubDate,
         ];
     }
