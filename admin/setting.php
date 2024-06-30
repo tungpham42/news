@@ -45,19 +45,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="container mt-5">
     <h1>Settings Panel</h1>
     <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-      <div class="form-group">
+      <div class="form-group my-3">
         <label for="username">Username</label>
         <input type="text" class="form-control" id="username" name="username" value="<?php echo $settings['username']; ?>">
       </div>
-      <div class="form-group">
+      <div class="form-group my-3">
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" name="password" value="<?php echo $settings['password']; ?>">
       </div>
-      <div class="form-group">
+      <div class="form-group my-3">
         <label for="siteTitle">Site Title</label>
         <input type="text" class="form-control" id="siteTitle" name="siteTitle" value="<?php echo $settings['siteTitle']; ?>">
       </div>
-      <div class="form-group">
+      <div class="form-group my-3">
         <label for="siteTitle">Site Description</label>
         <input type="text" class="form-control" id="siteDescription" name="siteDescription" value="<?php echo $settings['siteDescription']; ?>">
       </div>
