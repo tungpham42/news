@@ -30,7 +30,7 @@ function fetchRss(rssUrl, containerID) {
         );
 
         newsContainer.append(`
-                  <div class="col-md-4 mb-4">
+                  <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                     <div class="card">
                       <div class="card-body">
                         <h5 class="card-title"><a href="${
