@@ -43,17 +43,17 @@
       <form method="POST" action="update_news.php">
         <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
 
-        <div class="form-group">
+        <div class="form-group my-3">
           <label for="title">News Title:</label>
           <input type="text" class="form-control" id="title" name="title" value="<?php echo $row['title']; ?>" required>
         </div>
 
-        <div class="form-group">
+        <div class="form-group my-3">
           <label for="url">RSS URL:</label>
           <input type="text" class="form-control" id="url" name="url" value="<?php echo $row['url']; ?>" required>
         </div>
 
-        <div class="form-group">
+        <div class="form-group my-3">
           <label for="name">Short name:</label>
           <input type="text" class="form-control" id="name" name="name" value="<?php echo $row['name']; ?>" required>
         </div>
