@@ -40,7 +40,8 @@ include './config.php';
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center mb-4"><?php echo $settings['siteTitle']; ?></h1>
+        <h1 class="text-center mb-3"><?php echo $settings['siteTitle']; ?></h1>
+        <h4 class="text-center mb-5"><?php echo $settings['siteDescription']; ?></h4>
 
         <!-- Tabs navigation -->
         <ul class="nav nav-tabs" id="newsTabs" role="tablist">
