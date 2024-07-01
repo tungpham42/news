@@ -80,9 +80,9 @@ if ($count === 0) {
     $statement->execute($defaultSettings);
 
     $firstNews = array(
-        'title' => 'VnExpress',
-        'url' => 'https://vnexpress.net/rss/tin-moi-nhat.rss',
-        'name' => 'vne'
+        'title' => 'New York Times',
+        'url' => 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
+        'name' => 'nyt'
     );
     $insertFirstNewsQuery = '
     INSERT INTO `news` (`title`, `url`, `name`)
