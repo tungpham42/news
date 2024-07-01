@@ -38,9 +38,41 @@
       // Check if the news record exists
       if (!$row) {
         echo '<p>Record not found.</p>';
+      } else if (isset($_POST['submit'])) {
+        $id = $_POST['id']; // Assuming 'id' is the primary title of the record to be updated
+        $newTitle = $_POST['title'];
+        $newUrl = $_POST['url'];
+        $newName = $_POST['name'];
+
+        // Build and execute the SQL query to update the record
+        $query = 'UPDATE `news` SET `title` = :new_title, `url` = :new_url, `name` = :new_name WHERE `id` = :id';
+        $statement = $pdo->prepare($query);
+        $statement->bindValue(':new_title', $newTitle);
+        $statement->bindValue(':new_url', $newUrl);
+        $statement->bindValue(':new_name', $newName);
+        $statement->bindValue(':id', $id);
+
+        try {
+            $statement->execute();
+        } catch (PDOException $e) {
+            die("Error updating record: " . $e->getMessage());
+        }
+
+        // Check the result of the update operation
+        if ($statement->rowCount() > 0) {
+            echo "Record updated successfully.";
+        } else {
+            echo "No records were updated.";
+        }
+
+        // Close the database connection
+        $pdo = null;
+        sleep(1);
+        header('Location: admin.php');
+        exit;
       } else {
     ?>
-      <form method="POST" action="update_news.php">
+      <form method="POST" action="edit.php">
         <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
 
         <div class="form-group my-3">
@@ -58,7 +90,7 @@
           <input type="text" class="form-control" id="name" name="name" value="<?php echo $row['name']; ?>" required>
         </div>
 
-        <button type="submit" class="btn btn-dark my-3">Edit</button>
+        <button type="submit" name="submit" class="btn btn-dark my-3">Edit</button>
       </form>
     <?php
       }
