@@ -52,9 +52,9 @@ function fetchRss(rssUrl, containerID) {
   });
 }
 $(document).ready(function () {
-  newsData.forEach((news, index) => {
+  newsData.forEach((news) => {
     fetchRss(news.url, "#" + news.name + "-news-container");
-    $('#' + news.name + '-tab').on('click', function(){
+    $("#" + news.name + "-tab").on("click", function () {
       fetchRss(news.url, "#" + news.name + "-news-container");
     });
   });
