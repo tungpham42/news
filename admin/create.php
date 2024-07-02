@@ -48,7 +48,7 @@
       }
     } else {
     ?>
-      <form method="POST" action="create.php">
+      <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <div class="form-group my-3">
           <label for="title">News Title:</label>
           <input type="text" class="form-control" id="title" name="title" required>

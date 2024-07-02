@@ -39,7 +39,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
           </div>
           <div class="card-body">
             <?php if (isset($error)) echo '<p>' . $error . '</p>'; ?>
-            <form method="POST" action="">
+            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
               <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input type="username" class="form-control" id="username" name="username" placeholder="Enter your username">

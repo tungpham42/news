@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $updatedStatement->execute();
   // Close the database connection
   $pdo = null;
-  header('Location: index.php');
+  header('Location: admin.php');
 }
 ?>
 <!DOCTYPE html>

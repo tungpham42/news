@@ -72,7 +72,7 @@
         exit;
       } else {
     ?>
-      <form method="POST" action="edit.php">
+      <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
 
         <div class="form-group my-3">
