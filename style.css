@@ -14,19 +14,6 @@ small,
 button {
   font-family: "Be Vietnam Pro", sans-serif !important;
 }
-.card {
-  border: none;
-  border-radius: 0.5rem;
-}
-
-.card-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.card-text {
-  font-size: 0.9rem;
-}
 
 #back-to-top {
   position: fixed;
