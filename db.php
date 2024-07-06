@@ -1,11 +1,12 @@
 <?php
-$db_type = 'sqlite'; // mysql or sqlite
+$db_type = 'mysql'; // mysql or sqlite
 if ($db_type == 'mysql') {
+    $url = parse_url(getenv("JAWSDB_URL"));
 	/* Database config */
-	$db_host		= '127.0.0.1';
-	$db_user		= 'db_user';
-	$db_pass		= 'db_pass';
-	$db_database	= 'db_name';
+	$db_host		= $url["host"];
+	$db_user		= $url["user"];
+	$db_pass		= $url["pass"];
+	$db_database	= substr($url["path"], 1);
 	/* End config */
 	$pdo = new PDO('mysql:host='.$db_host.';port=3306;dbname='.$db_database,$db_user,$db_pass);
 	$pdo->query('SET names UTF8');
