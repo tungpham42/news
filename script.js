@@ -48,9 +48,9 @@ function fetchRss(rssUrl, containerID) {
                   <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                     <div class="card">
                       <div class="card-body">
-                        <h5 class="card-title"><a href="${
-                          item.link
-                        }" target="_blank">${item.title}</a></h5>
+                        <h5 class="card-title" title="${
+                          item.title
+                        }"><a href="${item.link}" target="_blank">${item.title}</a></h5>
                         <p class="card-text">${stripHTMLTags(
                           descriptionWithoutImg
                         )}</p>
@@ -62,8 +62,8 @@ function fetchRss(rssUrl, containerID) {
                   </div>
                 `);
       });
-      limitText("h5.card-title", 50);
-      limitText("p.card-text", 100);
+      limitText("h5.card-title > a", 50);
+      limitText("p.card-text", 200);
     },
     error: function (err) {
       console.log("Error fetching RSS feed:", err);
