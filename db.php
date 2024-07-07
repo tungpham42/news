@@ -1,5 +1,5 @@
 <?php
-$db_type = 'sqlite'; // mysql or sqlite
+$db_type = 'mysql'; // mysql or sqlite
 if ($db_type == 'mysql') {
     $url = parse_url(getenv("JAWSDB_URL"));
 	/* Database config */
