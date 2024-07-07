@@ -12,6 +12,21 @@ function setEqualHeight(selector, offset = 0) {
     element.style.height = maxHeight + offset + "px";
   });
 }
+function limitText(selector, maxLength) {
+  const $element = $(selector);
+  $element.each(function () {
+    if ($(this).length) {
+      let text = $(this).text();
+      if (text.length > maxLength) {
+        text = text.substring(0, maxLength) + "...";
+        $(this).text(text);
+      }
+    }
+  });
+}
+function stripHTMLTags(input) {
+  return DOMPurify.sanitize(input, { ALLOWED_TAGS: [] });
+}
 function fetchRss(rssUrl, containerID) {
   $.ajax({
     url: "fetch_rss.php",
@@ -36,7 +51,9 @@ function fetchRss(rssUrl, containerID) {
                         <h5 class="card-title"><a href="${
                           item.link
                         }" target="_blank">${item.title}</a></h5>
-                        <p class="card-text">${descriptionWithoutImg}</p>
+                        <p class="card-text">${stripHTMLTags(
+                          descriptionWithoutImg
+                        )}</p>
                         <small class="text-muted d-block my-3">${new Date(
                           item.pubDate
                         ).toLocaleDateString("vi-VN")}</small>
@@ -45,6 +62,8 @@ function fetchRss(rssUrl, containerID) {
                   </div>
                 `);
       });
+      limitText("h5.card-title", 50);
+      limitText("p.card-text", 100);
     },
     error: function (err) {
       console.log("Error fetching RSS feed:", err);
