@@ -51,13 +51,13 @@ function fetchRss(rssUrl, containerID) {
     },
   });
 }
-$(document).ready(function () {
-  newsData.forEach((news) => {
+newsData.forEach((news) => {
+  fetchRss(news.url, "#" + news.name + "-news-container");
+  $("#" + news.name + "-tab").on("click", function () {
     fetchRss(news.url, "#" + news.name + "-news-container");
-    $("#" + news.name + "-tab").on("click", function () {
-      fetchRss(news.url, "#" + news.name + "-news-container");
-    });
   });
+});
+$(document).ready(function () {
   function updateHeights() {
     setEqualHeight("img.card-img-top");
     setEqualHeight("h5.card-title");
