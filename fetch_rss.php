@@ -12,9 +12,15 @@ function fetchRSS($url) {
     $items = [];
     
     foreach ($rss->channel->item as $item) {
+        $item_thumbnail = '';
+        if (preg_match('/<img[^>]+src="([^">]+)"/i', $item->description, $matches)) {
+            // Return the first found image URL
+            $item_thumbnail = ($matches) ? $matches[1]: '/noimg.png';
+        }
         $items[] = [
             'title' => (string) html_entity_decode(removeCdataTags($item->title)),
             'link'  => (string) $item->link,
+            'image' => (string) $item_thumbnail,
             'description' => (string) html_entity_decode(removeCdataTags($item->description)),
             'pubDate' => (string) $item->pubDate,
         ];
