@@ -25,7 +25,7 @@ include './config.php';
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/<?php echo $settings['theme']; ?>/bootstrap.min.css" />
     <!-- Custom CSS -->
-    <link href="style.css?v=10" rel="stylesheet">
+    <link href="style.css?v=11" rel="stylesheet">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3585118770961536" crossorigin="anonymous"></script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -69,6 +69,22 @@ include './config.php';
             ?>
         </div>
     </div>
+    <div class="modal fade" id="newsModal" tabindex="-1" aria-labelledby="newsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newsModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                </div>
+                <div class="modal-body" id="newsModalBody">
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-secondary" data-bs-dismiss="modal">Đóng</a>
+                    <a id="newsModalLink" class="btn btn-primary" target="_blank">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <button id="back-to-top" class="btn btn-primary">
         <i class="fa-solid fa-chevron-up text-light"></i>
     </button>
@@ -78,6 +94,6 @@ include './config.php';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js" integrity="sha512-jB0TkTBeQC9ZSkBqDhdmfTv1qdfbWpGE72yJ/01Srq6hEzZIz2xkz1e57p9ai7IeHMwEG7HpzG6NdptChif5Pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Custom JS -->
-    <script src="script.js?v=69"></script>
+    <script src="script.js?v=79"></script>
 </body>
 </html>

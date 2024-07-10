@@ -18,6 +18,9 @@ img {
   width: 100%;
   margin-bottom: 20px;
 }
+.card {
+  cursor: pointer;
+}
 #back-to-top {
   position: fixed;
   border-radius: 5px;
