@@ -27,7 +27,7 @@ function limitText(selector, maxLength) {
 function stripHTMLTags(input) {
   return DOMPurify.sanitize(input, { ALLOWED_TAGS: [] });
 }
-function fetchRss(rssUrl, containerID) {
+function fetchRss(rssUrl, containerID, newsName) {
   $.ajax({
     url: "fetch_rss.php",
     data: {
@@ -37,8 +37,12 @@ function fetchRss(rssUrl, containerID) {
     success: function (data) {
       const newsContainer = $(containerID);
       newsContainer.empty();
-      data.forEach(function (item) {
-        // Remove img tags from the description
+      console.log(newsContainer);
+      data.forEach(function (item, index) {
+        var modalContainer = $("#newsModal-" + newsName + "-" + index);
+        console.log("#newsModal-" + newsName + "-" + index);
+        var modalBody = modalContainer.find(".modal-body");
+        // modalBody.empty();
         const descriptionWithoutImg = item.description.replace(
           /<img[^>]*>/g,
           ""
@@ -50,7 +54,7 @@ function fetchRss(rssUrl, containerID) {
                       <div class="card-body">
                         <h5 class="card-title" title="${
                           item.title
-                        }"><a href="${item.link}" target="_blank">${item.title}</a></h5>
+                        }"><a href="${item.link}" target="_blank" data-bs-toggle="modal" data-bs-target="#newsModal-${newsName}-${index}">${item.title}</a></h5>
                         <p class="card-text">${stripHTMLTags(
                           descriptionWithoutImg
                         )}</p>
@@ -61,6 +65,25 @@ function fetchRss(rssUrl, containerID) {
                     </div>
                   </div>
                 `);
+        $("body").append(`
+          <div class="modal fade" id="newsModal-${newsName}-${index}" tabindex="-1" aria-labelledby="newsModalLabel-${newsName}-${index}" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="newsModalLabel-${newsName}-${index}">${item.title}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                </div>
+                <div class="modal-body">
+                  <p>${item.description}<p>
+                </div>
+                <div class="modal-footer">
+                  <a class="btn btn-secondary" data-bs-dismiss="modal">Đóng</a>
+                  <a class="btn btn-primary" target="_blank" href="${item.link}">Xem thêm</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `);
       });
       limitText("h5.card-title > a", 50);
       limitText("p.card-text", 200);
@@ -71,9 +94,9 @@ function fetchRss(rssUrl, containerID) {
   });
 }
 newsData.forEach((news) => {
-  fetchRss(news.url, "#" + news.name + "-news-container");
+  fetchRss(news.url, "#" + news.name + "-news-container", news.name);
   $("#" + news.name + "-tab").on("click", function () {
-    fetchRss(news.url, "#" + news.name + "-news-container");
+    fetchRss(news.url, "#" + news.name + "-news-container", news.name);
   });
 });
 $(document).ready(function () {
