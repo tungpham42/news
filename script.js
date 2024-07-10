@@ -84,6 +84,9 @@ function fetchRss(rssUrl, containerID, newsName) {
             </div>
           </div>
         `);
+        if ($("#newsModal-" + newsName + "-" + index).length > 1) {
+          $("#newsModal-" + newsName + "-" + index).remove();
+        }
       });
       limitText("h5.card-title > a", 50);
       limitText("p.card-text", 200);
