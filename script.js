@@ -32,14 +32,14 @@ const newsModalLabel = document.getElementById("newsModalLabel");
 const newsModalBody = document.getElementById("newsModalBody");
 const newsModalLink = document.getElementById("newsModalLink");
 
-function fetchRss(rssUrl, containerID, newsName) {
+function fetchRss(rssUrl, newsName) {
   $.ajax({
     url: "fetch_rss.php",
     data: { rssUrl },
     dataType: "json",
     method: "GET",
     success: function (data) {
-      const newsContainer = $(containerID);
+      const newsContainer = $(`#${newsName}-news-container`);
       newsContainer.empty();
 
       data.forEach((item) => {
@@ -93,9 +93,9 @@ newsModal.addEventListener("show.bs.modal", (event) => {
 });
 
 newsData.forEach((news) => {
-  fetchRss(news.url, `#${news.name}-news-container`, news.name);
+  fetchRss(news.url, news.name);
   $(`#${news.name}-tab`).on("click", () => {
-    fetchRss(news.url, `#${news.name}-news-container`, news.name);
+    fetchRss(news.url, news.name);
   });
 });
 
