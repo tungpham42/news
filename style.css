@@ -15,9 +15,23 @@ button {
   font-family: "Be Vietnam Pro", sans-serif !important;
 }
 img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
   margin-bottom: 20px;
+}
+iframe,
+figure {
+  width: 100% !important;
+}
+a {
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
 }
 .card {
   cursor: pointer;
