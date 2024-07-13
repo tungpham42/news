@@ -104,6 +104,7 @@ $(document).ready(function () {
     setEqualHeight("img.card-img-top");
     setEqualHeight("h5.card-title");
     setEqualHeight(".card-text");
+    setEqualHeight(".card");
   }
 
   function setEvents() {
