@@ -42,7 +42,7 @@ include './config.php';
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center mb-3"><?php echo $settings['siteTitle']; ?></h1>
+        <h1 class="text-center mb-3"><i class="fa-solid fa-square-rss"></i> <?php echo $settings['siteTitle']; ?></h1>
         <h4 class="text-center mb-3"><?php echo $settings['siteDescription']; ?></h4>
 
         <!-- Tabs navigation -->
@@ -72,17 +72,17 @@ include './config.php';
         </div>
     </div>
     <div class="modal fade" id="newsModal" tabindex="-1" aria-labelledby="newsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="newsModalLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="newsModalBody">
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-secondary" data-bs-dismiss="modal">Đóng</a>
-                    <a id="newsModalLink" class="btn btn-primary" target="_blank">Xem thêm</a>
+                    <a class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Close</a>
+                    <a id="newsModalLink" class="btn btn-primary" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> View more</a>
                 </div>
             </div>
         </div>
