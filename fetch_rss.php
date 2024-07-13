@@ -12,10 +12,15 @@ function fetchRSS($url) {
     $items = [];
     
     foreach ($rss->channel->item as $item) {
+        $content_encoded = htmlspecialchars($item->children('content', true)->encoded, ENT_QUOTES, 'UTF-8');
+        if (!$content_encoded) {
+            $content_encoded = $item->description;
+        }
         $items[] = [
             'title' => (string) html_entity_decode(removeCdataTags($item->title)),
             'link'  => (string) $item->link,
             'description' => (string) html_entity_decode(removeCdataTags($item->description)),
+            'content' => (string) html_entity_decode(removeCdataTags($content_encoded)),
             'pubDate' => (string) $item->pubDate,
         ];
     }

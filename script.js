@@ -53,7 +53,7 @@ function fetchRss(rssUrl, newsName) {
               <div class="card-body">
                 <h5 class="card-title" title="${item.title}">${item.title}</h5>
                 <p class="card-text">${stripHTMLTags(descriptionWithoutImg)}</p>
-                <div class="card-description d-none">${item.description}</div>
+                <div class="card-description d-none">${item.content}</div>
                 <span class="card-title-full d-none">${item.title}</span>
                 <span class="card-link d-none">${item.link}</span>
                 <small class="text-muted d-block my-3">${new Date(
