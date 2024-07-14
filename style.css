@@ -47,3 +47,6 @@ a {
   padding: 10px 15px;
   display: none;
 }
+#newsModalBody {
+  white-space: pre-line;
+}

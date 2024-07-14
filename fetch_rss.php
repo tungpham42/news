@@ -34,7 +34,11 @@ function fetchRSS($url) {
         }
     } elseif ($isAtom) {
         foreach ($rss->entry as $entry) {
-            $content_encoded = htmlspecialchars($entry->children('content', true), ENT_QUOTES, 'UTF-8');
+            $content_encoded = htmlspecialchars($entry->content, ENT_QUOTES, 'UTF-8');
+            $releaseDate = $entry->children('im', true)->releaseDate;
+            if (!$releaseDate) {
+                $releaseDate = $entry->updated;
+            }
             if (!$content_encoded) {
                 $content_encoded = $entry->summary;
             }
@@ -46,7 +50,7 @@ function fetchRSS($url) {
                 'link'  => (string) $entry->link['href'],
                 'description' => (string) html_entity_decode(removeCdataTags($entry->summary)),
                 'content' => (string) html_entity_decode(removeCdataTags($content_encoded)),
-                'pubDate' => (string) $entry->updated,
+                'pubDate' => (string) $releaseDate,
             ];
         }
     }
