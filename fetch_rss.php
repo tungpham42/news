@@ -21,6 +21,9 @@ function fetchRSS($url) {
             if (!$content_encoded) {
                 $content_encoded = $item->description;
             }
+            if (!$item->description) {
+                $item->description = $content_encoded;
+            }
             $items[] = [
                 'title' => (string) html_entity_decode(removeCdataTags($item->title)),
                 'link'  => (string) $item->link,
@@ -34,6 +37,9 @@ function fetchRSS($url) {
             $content_encoded = htmlspecialchars($entry->children('content', true), ENT_QUOTES, 'UTF-8');
             if (!$content_encoded) {
                 $content_encoded = $entry->summary;
+            }
+            if (!$entry->summary) {
+                $entry->summary = $content_encoded;
             }
             $items[] = [
                 'title' => (string) html_entity_decode(removeCdataTags($entry->title)),
