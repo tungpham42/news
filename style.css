@@ -28,8 +28,8 @@ a:has(img) {
   width: fit-content !important;
 }
 iframe {
-  display: block !important;
-  margin: auto !important;
+  display: block;
+  margin: auto;
 }
 a {
   display: inline-block;
