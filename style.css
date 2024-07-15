@@ -53,3 +53,9 @@ a {
 #newsModalBody {
   white-space: pre-line;
 }
+#newsModalBody :has(video),
+#newsModalBody :has(iframe),
+#newsModalBody video {
+  max-width: 100% !important;
+  height: auto;
+}
