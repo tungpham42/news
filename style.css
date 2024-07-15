@@ -15,7 +15,6 @@ button {
   font-family: "Be Vietnam Pro", sans-serif !important;
 }
 img,
-iframe,
 figure,
 a:has(img) {
   width: auto;
@@ -27,6 +26,10 @@ a:has(img) {
 }
 a:has(img) {
   width: fit-content !important;
+}
+iframe {
+  display: block !important;
+  margin: auto !important;
 }
 a {
   display: inline-block;
