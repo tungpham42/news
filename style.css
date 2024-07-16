@@ -30,6 +30,7 @@ a:has(img) {
 iframe {
   display: block;
   margin: auto;
+  max-width: 100%;
 }
 a {
   display: inline-block;
