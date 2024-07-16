@@ -67,6 +67,11 @@ function fetchRss(rssUrl, newsName) {
 
       limitText("h5.card-title", 50);
       limitText("p.card-text", 200);
+      const videos = document.querySelectorAll("video");
+      videos.forEach((video) => {
+        video.autoplay = false;
+        video.removeAttribute("autoplay");
+      });
     },
     error: function (err) {
       console.error("Error fetching RSS feed:", err);
